@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- 맵핑하는 파일 / 맵퍼파일 -->
+  <mapper namespace="org.doit.ik.mapper.BoardMapper">
+     
+     <select id="getList" resultType="org.doit.ik.domain.BoardVO">
+        <![CDATA[
+        select *
+        from tbl_board
+        where bno > 0
+        order by bno desc
+        ]]>
+     </select>
+     
+     <!-- void insert(BoardVO board); // 새글 쓰기 -->
+     <insert id="insert" parameterType="org.doit.ik.domain.BoardVO">
+        INSERT INTO tbl_board (bno, title, content, writer)
+        VALUES ( seq_board.nextval,  #{title}, #{content}, #{writer} ) 
+     </insert>
+     
+     <!-- void insertSelectKey(BoardVO board);// 새글쓰기+글번호(pk) 반환 -->
+     <insert id="insertSelectKey" parameterType="org.doit.ik.domain.BoardVO">
+   <selectKey order="BEFORE" resultType="long" keyProperty="bno">
+     SELECT seq_board.nextval
+     FROM dual
+   </selectKey>
+      INSERT INTO tbl_board (bno, title, content, writer)
+        VALUES ( #{bno} ,  #{title}, #{content}, #{writer} )
+   </insert>
+     
+     <select id="read" resultType="org.doit.ik.domain.BoardVO">
+     SELECT *
+     FROM tbl_board
+     WHERE bno = #{bno}
+     </select>
+     
+     <!-- int update(BoardVO board); //게시글수정 -->
+     <update id="update">
+     UPDATE tbl_board
+     SET title=#{title}, content=#{content}, updatedate=SYSDATE
+     WHERE bno = #{bno}
+     </update>
+     
+     <!-- int remove(Long bno); //게시글 삭제-->
+     <delete id="delete">
+     DELETE FROM tbl_board
+     WHERE bno =#{bno}
+     </delete>
+  </mapper>

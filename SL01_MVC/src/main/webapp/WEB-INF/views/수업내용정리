@@ -1,0 +1,33 @@
+[수업 내용 정리]
+
+1. home.jsp 
+a href = "/scott/dept" 링크 태그 추가
+
+2. 호출하는 ScottController 추가
+	@AW
+	DeptMapper deptMapper;
+
+//컨트롤 메서드
+dept(){
+	ArrayList<DeptDTO> list = this. deptMapper.부서메서드();
+	model.addA("list",list)
+	return "/scott/dept";
+}
+
+ 
+3. org.doit.ik.domain
+ㄴDeptDTO.java
+
+org.doit.ik.mapper.scott
+DeptMapper.java 인터페이스 
+   DeptMapper.xml 메퍼파일
+	ㄴ DAO역할
+	
+4.	views 폴더
+	ㄴ scott 폴더 
+		ㄴdept.jps 
+부서정보 출력
+
+---------------------------------------------------------------------------------------------------------------
+
+5. 부서번호를 체크 후 검색(search) 버튼을 클릭하면 체크된 부서원들만 출력(조회)

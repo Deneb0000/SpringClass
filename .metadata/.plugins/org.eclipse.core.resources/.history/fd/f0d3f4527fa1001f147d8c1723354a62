@@ -1,6 +1,0 @@
-package org.doit.ik.mapper;
-
-public interface TimeMapper {
-
-	String getTime(); //실제 디비서버에서 시간을 읽어 오겠다
-}

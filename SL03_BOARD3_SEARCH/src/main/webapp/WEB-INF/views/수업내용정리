@@ -1,0 +1,22 @@
+게시판+ 검색 기능
+
+BEGIN
+    FOR i IN 1 .. 158
+    LOOP 
+      IF MOD(i,5)=0 OR MOD(i, 17)=0 THEN
+        UPDATE tbl_board
+        SET title = '자바-' || i        
+        WHERE bno = i;
+      END IF; 
+    END LOOP;  
+END;
+COMMIT;
+
+1. 게시판 검색
+
+1)단일 항목 검색 : 제목("t"), 내용("c"), 작성자("w") 검색
+2) ㄷ ㅏ중 항목 검색 : 제목 + 내용 ("tc"), 제목 + 작성자("tw"), 제목 + 내용 + 작성자("tcw")
+
+
+2. 검색조건(type) : select, checkbox
+	검색어(keyword) : input태그 사용
