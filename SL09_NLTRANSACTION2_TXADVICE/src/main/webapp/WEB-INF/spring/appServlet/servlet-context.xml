@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing 
+		infrastructure -->
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+
+
+	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<beans:property name="prefix" value="/WEB-INF/views/" /> <beans:property 
+		name="suffix" value=".jsp" /> </beans:bean> -->
+
+
+	<context:component-scan
+		base-package="org.doit.ik" />
+
+
+	<!-- Tiles -->
+	<beans:bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>/WEB-INF/tiles/tiles.xml</beans:value>
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<!-- <beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver"> 
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" 
+		/> <beans:property name="order" value="1" /> </beans:bean> -->
+
+	<!-- 첨부파일 업로드 위한 작업 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="-1"></beans:property>
+		<beans:property name="maxInMemorySize" value="10240"></beans:property>
+		<beans:property name="defaultEncoding" value="UTF-8"></beans:property>
+	</beans:bean>
+
+	<!-- 522 tx 네임스페이스를 이용한 트랜젝션 설정 -->
+	<tx:advice id="txAdvice"
+		transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insertAndPointUpOfMember"
+				propagation="REQUIRED" isolation="DEFAULT" read-only="false"
+				timeout="-1" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>	<!-- ┌ 호출할 메소드 -->
+		<aop:pointcut expression="execution(public void insertAndPointUpOfMember(*,*) )" id="insertOrM" />
+<!-- <-어라운드 마크가 잘 찍혀 있다는 뜻 -->		<aop:advisor advice-ref="txAdvice" pointcut-ref="insertOrM" />
+	</aop:config>
+
+<!-- p526 -->   
+   <aop:aspectj-autoproxy proxy-target-class="true" />
+   
+</beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

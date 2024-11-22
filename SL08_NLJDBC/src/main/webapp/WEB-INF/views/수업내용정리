@@ -1,0 +1,25 @@
+[수업내용정리]
+
+1. SL06_NLMVC -> SL06_NLMVC2
+2. 문제점
+	1) 공지사항 목록 ( notice.htm) -> NoticeController 맾핑
+	2) 공지사항 상세보기 ( noticeDetail.htm) -> NoticeDetailController 맾핑
+	공지사항(notice)과 관련된 ㅐ핑은 하나의 컨트롤러 생성 + 각각의 기능들이 컨트롤러 메서드와 매핑
+	
+	3) servlet-context.xml
+	 <bean> 빈생성 + DI	->	@어노테이션 으로 자동 처리 ...
+	 
+	 p122 
+	 
+	 
+글쓰기 작업 
+로그인-> 글처리
+<a class="btn-write button" href="noticeReg.htm">글쓰기</a>
+->CustomerContri-
+ㄴ컨트롤러 메서드 추가
+ㄴ
+
+공지사항 글수정 부터 ~~
+
+1)컨트롤러 메서드 추가
+noticedetail.htm포워딩

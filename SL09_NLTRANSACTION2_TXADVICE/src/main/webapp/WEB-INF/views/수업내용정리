@@ -1,0 +1,32 @@
+[수업내용정리]
+
+SL08_NLJDBC - JDBCTemplate 클래스 사용 예제
+
+* JDBCTemplate 클래스 메서드 *
+1) 조회 : query()
+   - 파라미터
+   1) RowMapper : rs로 다 담는작업 필요없이..
+   				  조회결과를 ResultSet에서 가져와 객체를 생성해줌
+
+2) 조회 : queryForList()  - 쿼리실행결과, 읽어온 칼럼 개수가 한 개일때 사용
+3) 조회 : queryForObject() - 쿼리실행결과, 구하는 행의 개수가 정확히 한 개일때.  	
+
+4) 삽입/수정/삭제 : update()			 
+
+-----------------------------
+
+SL08_NLJDBC2 - NamedParameterJdbcTemplate 클래스 사용 예제
+
+- 파라미터가 인덱스 (?) 가 아니라, 이름 기반이다.
+
+* NamedParameterJdbcTemplate 메서드 *
+1) query 괄호안에.. Object[]가 아니라 -> Map<> 을 줌 . 이름을 줘서 그럼
+2) Map<>대신, SqlParameterSource를 주는것도 가능.
+
+
+NoticeDAO -> Interface로 만들자.
+NoticeDAOImpl 을 구현클래스로!
+
+컨트롤러 추가할 것.
+JoinController.java 추가
+HomeController.java 수정

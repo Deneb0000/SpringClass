@@ -1,0 +1,19 @@
+/customer/notice.htm 요청 URL
+
+[선언적 트랜젝션 처리]
+1) xml 설정파일
+	<!-- <tx:advice> --> 태그 설정.
+SL09_NLTRANSACTION2_TXADVICE p.522
+	
+2) @Transactional 어노테이션 사용해서 처리	<-
+SL09_NLTRANSACTION3_ANNOTATION p.524
+어노테이션을 메소드나 클래스에도 할수 있다
+
+트랜젝션 처리를 하고자 한다면,
+어노테이션 쓸것같으면 
+
+<!-- p.524 어노테이션 기반으 ㅣ트랜젝션 처리 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="false" mode="proxy"/>
+	
+	DAO나 imple에 어노테이션 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT)
+	주기만해도 된다! 

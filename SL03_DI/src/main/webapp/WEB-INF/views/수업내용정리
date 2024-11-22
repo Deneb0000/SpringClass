@@ -10,6 +10,3 @@
   2) org.doti.ik.di.test 패키지 추가
   	ㄴ Ex01.java 파일 추가 + main()
   	
-  	RecordImpl record = new RecordImpl();
-  	
-  	record org.doit.ik.di.recordiIMpl

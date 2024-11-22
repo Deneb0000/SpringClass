@@ -1,0 +1,4 @@
+/ajax/upload 요청 URL
+
+
+-> AjaxUploadController.java 호출

@@ -1,0 +1,41 @@
+/customer/notice.htm 요청 URL
+
+SL09_NLTRANSACTION_TMANAGER_TTEMPLE
+p.512 표 확인
+표
+
+[트랜젝션 처리 필요 부분?]
+1. 공지사항 새글 작성 하게되면, insert
+2. 자동으로 (코딩으로) 작성자 에게 포인트를 1 중가 update
+ 포인트 3보다 크면 오류가 발생시키도록 제약 조건.
+ 
+ 
+ 
+ ALTER TABLE member
+ADD (point number(10) DEFAULT(0));
+
+alter TABLE notices
+add CONSTRAINT ck_notices_title UNIQUE (title);
+
+alter TABLE member
+add CONSTRAINT ck_notices_point CHeck (point < 3);
+
+
+--seq 칼럼 pk_notices_seq 제약조건 설정
+alter TABLE notices
+add CONSTRAINT ck_notices_seq PRIMARY KEY (seq);
+
+commit;
+
+--회원가입 추가 코딩
+-- 트랜잭션 처리
+
+
+
+
+
+
+
+String Tiles
+mybiatis
+Spring Security

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- p.104 -->
+	<context:annotation-config/>
+
+<!-- id를 주지않으면 클래스 명의 소문자로 등록된다 -->
+<bean id="record1" class="org.doit.ik.di3.RecordImpl3"></bean>
+<bean id="record2" class="org.doit.ik.di3.RecordImpl3"></bean>
+
+<bean id="rvi" class="org.doit.ik.di3.RecordViewImpl3"></bean>
+</beans>
