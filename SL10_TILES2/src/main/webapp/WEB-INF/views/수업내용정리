@@ -1,0 +1,27 @@
+[수업내용정리]
+SL10_TILES2
+
+* tiles 모듈화
+
+webapp
+  ㄴ inc 폴더
+     ㄴ footer.jsp
+     ㄴ header.jsp
+     ㄴ layout.jsp
+  ㄴ customer
+     ㄴ inc 폴더
+         ㄴ aside.jsp
+         ㄴ visual.jsp
+         ㄴ layout.jsp
+  ㄴ joinus
+     ㄴ inc 폴더
+         ㄴ aside.jsp
+         ㄴ visual.jsp
+         ㄴ layout.jsp
+
+모듈화!!
+
+모든 jsp페이지를 외부에서 바로 접근 못하게,
+=> WEB-INF 
+    ㄴ views 폴더
+        여기로 이동시키자 (jsp파일과 나머지 파일을 분리함)

@@ -1,0 +1,27 @@
+[수업내용정리]
+1. 스프링			+타일즈(tiles)
+	ㄴ 페이지 모듈화(집중화_
+	ㄴ 공통적인 부분(헤더, 폴더, 사이드 메뉴 풀풀]
+
+2. 리소스폴더
+	ㄴ w3ss폴더
+	ㄴcss 폴더
+		s flesbpx/css	
+		ㄴ css ㅍㅎㄹ도애	
+			
+			
+	
+	페이지 모듈화
+  views 폴더  
+    ㄴ layout 폴더 추가
+        ㄴ header.jsp   ***
+        ㄴ footer.jsp   ***
+        ㄴ template.jsp ***
+        
+    ㄴ city 폴더 추가
+        ㄴ london.jsp  ***
+        ㄴ paris.jsp
+        ㄴ seoul.jsp
+        ㄴ layout 폴더 추가
+           ㄴ nav.jsp  ***
+           ㄴ template.jsp ***		
