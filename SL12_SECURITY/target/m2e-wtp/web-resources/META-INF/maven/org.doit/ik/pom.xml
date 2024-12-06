@@ -236,8 +236,8 @@
          <artifactId>spring-security-core</artifactId>
          <version>${org.springframework-version}</version>
       </dependency>
-
       <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+	  <!-- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%> 사용하려면 필수 -->
       <dependency>
          <groupId>org.springframework.security</groupId>
          <artifactId>spring-security-taglibs</artifactId>

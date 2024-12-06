@@ -99,42 +99,42 @@ public class CustomerController {
    // <form action="" method="post">
    @PostMapping("noticeEdit.htm")
    public String noticeEdit(NoticeVO notice, Model model,
-         @RequestParam("o_filesrc") String oFilesrc, // 빈 문자열이 아니라면, 첨부파일이 있는것이다.(jsp에 추가한 태그)            
-         HttpServletRequest request 
-         ) 
+		   @RequestParam("o_filesrc") String oFilesrc, // 빈 문자열이 아니라면, 첨부파일이 있는것이다.(jsp에 추가한 태그)				
+		   HttpServletRequest request 
+		   ) 
          throws ClassNotFoundException, SQLException, IllegalStateException, IOException {
       
-      // 1.
-      CommonsMultipartFile multipartFile = notice.getFile();
-         String uploadRealPath = null;
-         if ( !multipartFile.isEmpty() ) {
-            uploadRealPath = request.getServletContext().getRealPath("/customer/upload");
-            System.out.println("> uploadRealPath : " + uploadRealPath);
-            //      이전의 원래 첨부파일 삭제하는 코딩
-            File delFile = new File(uploadRealPath, oFilesrc);
-            // System.out.println(">>> " + delFile.isDirectory() + " / " + delFile.isFile() );
-            if (  delFile.exists()  && delFile.isFile()  ) {
-               delFile.delete();
-            } // if
-            
-            
-            //        새로운 첨부파일 저장.
-            String  originalFilename = multipartFile.getOriginalFilename();
-            String filesystemName = getFileNameCheck(uploadRealPath, originalFilename);
+	   // 1.
+	   CommonsMultipartFile multipartFile = notice.getFile();
+	      String uploadRealPath = null;
+	      if ( !multipartFile.isEmpty() ) {
+	         uploadRealPath = request.getServletContext().getRealPath("/customer/upload");
+	         System.out.println("> uploadRealPath : " + uploadRealPath);
+	         // 	  이전의 원래 첨부파일 삭제하는 코딩
+	         File delFile = new File(uploadRealPath, oFilesrc);
+	         // System.out.println(">>> " + delFile.isDirectory() + " / " + delFile.isFile() );
+	         if (  delFile.exists()  && delFile.isFile()  ) {
+	            delFile.delete();
+	         } // if
+	         
+	         
+	         //        새로운 첨부파일 저장.
+	         String  originalFilename = multipartFile.getOriginalFilename();
+	         String filesystemName = getFileNameCheck(uploadRealPath, originalFilename);
 
-            File dest = new File(uploadRealPath, filesystemName );
-            multipartFile.transferTo(dest); // 실제 파일 저장
+	         File dest = new File(uploadRealPath, filesystemName );
+	         multipartFile.transferTo(dest); // 실제 파일 저장
 
-            notice.setFilesrc(filesystemName);
-         } else { // 첨부파일 없는경우
-            notice.setFilesrc(oFilesrc);
-            
-         }// if
+	         notice.setFilesrc(filesystemName);
+	      } else { // 첨부파일 없는경우
+	    	  notice.setFilesrc(oFilesrc);
+	    	  
+	      }// if
 
-      
-      
-      // 2.
-      int rowCount = this.noticeDao.update(notice);
+	   
+	   
+	   // 2.
+	   int rowCount = this.noticeDao.update(notice);
       if (rowCount == 1) { 
          return "redirect:noticeDetail.htm?seq="+notice.getSeq();
       } else { 
@@ -231,9 +231,9 @@ public class CustomerController {
    public String noticeDetail(Model model
          , @RequestParam( value = "seq") String seq )
                throws ClassNotFoundException, SQLException {
-      
-     this.noticeDao.hitUp(seq); // 조회수 증가 코딩 추가(상세보기 클릭 시)
-     
+	   
+	  this.noticeDao.hitUp(seq); // 조회수 증가 코딩 추가(상세보기 클릭 시)
+	  
       NoticeVO  notice  = this.noticeDao.getNotice(seq);      
       model.addAttribute("notice", notice);          
       return "customer.noticeDetail"; // ViewName

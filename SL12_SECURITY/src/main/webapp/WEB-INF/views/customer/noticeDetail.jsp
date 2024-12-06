@@ -43,7 +43,7 @@
 		<a class="btn-list button" href="notice.htm">목록</a> <a
 			class="btn-edit button" href="noticeEdit.htm?seq=${ notice.seq }">수정</a>
 		<a class="btn-del button"
-			href="noticeDel.htm?seq=${ notice.seq }&filesrc=${ notice.filesrc }">삭제</a>
+			href="noticeDel.htm?seq=${ notice.seq }&filesrc=${ notice.filesrc }"></a>
 	</p>
 	<div class="margin-small" style="border-top: 1px solid #dfdfdf;">
 		<dl class="article-detail-row">
